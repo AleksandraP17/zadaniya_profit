@@ -1,0 +1,76 @@
+<html>
+  <body>
+    <script>
+      let M = +prompt("Введите количество строк M =");              //Задаем матрицы М1 и М2.
+      let N = +prompt("Введите количество столбцов N =");
+      let K = +prompt("Введите количество строк K =");
+
+        let M1 = [];
+        for (let i = 0; i < M; i++) {
+          M1[i] = new Array();
+          for (let j = 0; j < N; j++) {
+            M1[i][j] = Math.round(Math.random() * 17);
+          }
+        }
+     
+        let M2 = [];
+        for (let i = 0; i < K; i++) {
+          M2[i] = new Array();
+          for (let j = 0; j < M; j++) {
+            M2[i][j] = Math.round(Math.random() * 17);
+          }
+        }
+    
+      let Asumma = [];                                               //Считаем алгебраическую сумму каждого столбца M2 (создаем массив Аsumma и в цикле считаем сумму).
+      for (let j = 0; j < M; j++) {
+        Asumma[j] = 0;
+        for (let i = 0; i < K; i++) {
+          Asumma[j] += M2[i][j];
+        }
+      }
+
+        let M3 = [];                                            //Создаем результирующую матрицу М3, полученную суммированием элементов каждой строки матрицы Ml с алгебраической суммой элементов соответствующего столбца матрицы М2.
+        for (i = 0; i < M1.length; i++) {
+          M3[i] = new Array();
+          for (j = 0; j < M1[0].length; j++) {
+            M3[i][j] = M1[i][j] + Asumma[i];
+          }
+        }
+
+        let k = 0;                                                  //Преобразуем многомерный массив в одномерный для сортировки.
+        let Massiv = [];
+        for (let j = 0; j < M3[0].length; j++) {
+          for (let i = 0; i - M3.length; i++) {
+            Massiv[k] = M3[i][j];
+            k++;
+          }
+        }
+
+        for (let i = 0; i < Massiv.length - 1; i++) {            //Сортировка "Пузырьком" для вывода элементов по убыванию.                               
+          for (let j = 0; j < Massiv.length - 1 - i; j++) {
+            if (Massiv[j + 1] > Massiv[j]) {
+              let X = Massiv[j + 1];
+              Massiv[j + 1] = Massiv[j];
+              Massiv[j] = X;
+            }
+          }
+        }
+        function show(Matrix, name){
+        document.write(name + "<br>");
+        for (let i = 0; i < Matrix.length; i++) {
+          for (let j = 0; j < Matrix.length; j++) {
+            document.write(Matrix[i][j] + "  ");
+          }
+          document.write("<br>");
+        }
+        document.write("<br>");
+      }
+        show(M1, "Матрица M1");
+        show(M2, "Матрица M2");
+        show(M3, "Матрица M3");
+        
+        document.write("<br><div>Элементы матрицы M3 в порядке убывания:</div>" + Massiv);
+
+    </script>
+  </body>
+</html>
