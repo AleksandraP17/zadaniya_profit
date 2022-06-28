@@ -1,0 +1,15 @@
+<html>
+ <head>
+  <script>
+      let N = +prompt("Введите значение N:");
+      let x = +prompt("Введите значение числа x:");
+      let a = 1;
+      let S = x;
+      do {
+        S = S + (Math.pow(x, 1 + a) + (1 + a)) / (x + a);
+          a++;
+    } while (S <= N);
+          alert ("При заданных значениях результат равен =" + S);
+
+</script>
+</html>

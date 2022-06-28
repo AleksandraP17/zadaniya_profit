@@ -1,0 +1,14 @@
+<html>
+ <head>
+  <script>
+      let N =+prompt ("Введите значение N:");
+      let P = 1;
+      let a = 0;
+      do {
+          P = P * (1 + (Math.abs(Math.sin(a + 0.1))));
+          a = a + 0.1;
+       } while (P <= N);
+      alert("Значение произведения=" + P);
+      
+</script>
+</html>

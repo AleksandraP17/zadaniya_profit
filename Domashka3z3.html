@@ -1,0 +1,19 @@
+<html>
+ <head>
+  <script>
+      'use strict'
+ //Ввод исходных данных
+let Sosn = (+prompt("Введите значение длины окружности"));
+
+//Решение
+let R = Math.sqrt (Sosn / Math.PI); //Радиус нашли
+let H = 2 * R; //Диаметр=2*R=Высота
+let V = 1 / 3 * H * Sosn;
+let Lobr = Math.sqrt (H ** 2 + R ** 2);  //Длина образующей 
+let Sbok = Math.PI * R * Lobr; //Площадь боковой поверхности 
+let Spov = Sosn + Sbok;
+ 
+ //Вывод результата
+ alert ("Объем конуса = " + V + "\nПлощадь полной поверхности конуса = " + Spov);
+</script>
+</html>

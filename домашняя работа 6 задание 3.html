@@ -1,0 +1,49 @@
+<html>
+ <head>
+  <script>
+    let lengthMass = Number(prompt ("Введите количество чисел в последовательности"));   
+    let massiv = new Array (lengthMass);
+    for(let i=0; i < massiv.length; i++) {
+    massiv [i] = Math.ceil(Math.random() * (10));
+    let product = 1;
+    }
+    let MinI = 0;
+    let Min = massiv[MinI];
+    let MaxI = 0;
+    let Max = massiv[MaxI];
+    for (i = 1; i < massiv.length; i++) {
+    if (massiv[i] < Min) {
+        MinI = massiv[i];
+        }
+       if (massiv[i] > Max) {
+            Max = massiv[i];
+	        MaxI = i;
+          }
+        }
+        if (MinI > MaxI){
+            amount = (MinI - MaxI) - 1;
+            if (amount > 0){
+                product = massiv[MaxI + 1];
+                for(let i = MaxI + 2; i < MinI; i++){
+                    product*= massiv [i];
+                }
+            }
+            }   else {
+                amount = (MaxI - MinI) - 1;
+                   if (amount > 0){
+                    product = massiv[MinI + 1];
+                     for(let i = MinI + 2; i < MaxI; i++){
+                      product*= massiv [i];
+            }
+
+        }
+        }
+       
+        console.log("Заданный массив:" + massiv);
+        console.log("Минимальное значение:" + Min);
+        console.log("Максимальное значение:" + Max);
+        console.log("Количество элементов последовательности:" + amount);
+        console.log("Произведение чисел между min и  max значениями" + product);
+        
+</script>
+</html>

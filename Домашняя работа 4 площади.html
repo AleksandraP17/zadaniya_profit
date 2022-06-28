@@ -1,0 +1,27 @@
+<html>
+ <head>
+  <script>
+      let x1 = Number(prompt("Введите координату точки А по оси x:"));
+      let y1 = Number(prompt("Введите координату точки А по оси y:"));
+      let x2 = Number(prompt("Введите координату точки B по оси x:"));
+      let y2 = Number(prompt("Введите координату точки B по оси y:"));
+      let x3 = Number(prompt("Введите координату точки C по оси x:"));
+      let y3 = Number(prompt("Введите координату точки C по оси y:"));
+      let OA = Math.sqrt ((x1 - 0)**2 + (y1 - 0)**2);
+      let Scircle = Math.PI * OA**2;  //Площадь круга с радиусом ОА
+      let OB = Math.sqrt ((x2 - 0)**2 + (y2 - 0)**2);
+      let Ssquare = OB**2;  //Площадь квадрата со стороной ОВ
+      let AC = Math.sqrt ((x3 - x1)**2 + (y3 - y1)**2);
+      let BC = Math.sqrt ((x3 - x2)**2 + (y3 - y2)**2);
+      let Srectangle = AC * BC;
+      if (Scircle > Ssquare && Scircle > Srectangle){
+          alert("Площадь круга с радиусом ОА больше");
+      } else if (Ssquare > Scircle && Ssquare > Srectangle){
+          alert("Площадь квадрата со стороной ОВ больше");
+      } else if (Srectangle > Scircle && Srectangle > Ssquare){
+          alert("Площадь прямоугольника со сторонами АС и ВС больше");
+      } else{
+          alert("Есть равные площади фигур")
+      }
+</script>
+</html>

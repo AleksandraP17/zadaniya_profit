@@ -1,0 +1,19 @@
+<html>
+ <head>
+  <script>
+     let lengthMass = Number(prompt ("Введите количество чисел в последовательности"));   
+     let  Massiv = new Array (lengthMass); 
+     for(let i=0; i < Massiv.length; i++) {
+      Massiv [i] = prompt ("Введите значения для массива");
+    }
+      let NewMassiv = [];
+      let count = 0;
+              for (let i = 0; i < Massiv.length; i++) {
+                  if (Massiv [i] == 0){;
+                    count ++;
+                    NewMassiv [count] = i;
+              }
+            }
+                   console. log (NewMassiv); 
+</script>
+</html>

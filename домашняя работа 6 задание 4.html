@@ -1,0 +1,41 @@
+<html>
+ <head>
+  <script>
+
+     let massiv = [-11, -2, -5, -11444, 17, 21, -7];
+     let NewMassiv = [];
+     let average;
+     for (let i = 0; i < massiv.length; i++){
+         if (massiv[i] > 0){
+             NewMassiv.push(massiv[i]);
+
+         }
+     }
+            for (let i = NewMassiv.length - 2; i >= 0; i--){
+                let left = i + 1;
+                let right = NewMassiv.length - 1;
+                let comparison = NewMassiv [i];
+
+                while (left <= right){
+                average = Math.round((right + left) / 2);
+                if (NewMassiv[average] == comparison){
+                break;
+             }
+                if (NewMassiv[average] > comparison){
+                left = average + 1;
+
+             }  else {
+                right = average - 1;
+            }
+          }
+              if (NewMassiv[average] > comparison){
+                  average+= 1;
+              }
+              NewMassiv.splice(average, 0, comparison);
+              NewMassiv.splice(i, 1);
+            }
+            console.log("Заданный массив:" + massiv);
+            console.log("Массив из положительных чисел в порядке убывания:" + NewMassiv);
+            
+</script>
+</html>

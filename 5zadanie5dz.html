@@ -1,0 +1,36 @@
+<html>
+ <head>
+  <script>
+
+      let Num = 452022; //Так, это минимальное число, большее 452022
+      let M; 
+      let a;
+      let Dmin;
+      let Dmax;
+      let Counter = 1; //Cчетчик цикла
+      let sequence = 1; //Порядок результатов
+      do {
+          let count = 1; //Счетчик в цикле
+           for (let a = 2; a < Num; a++) {
+             if (Num % a == 0) {
+                if (count == 1) {
+                    Dmin = a;
+                }
+                    Dmax = a;
+                    count++;
+            }
+            if (a == Num - 1) {
+                M = Dmin + Dmax;
+              if (M % 7 == 3) {
+               Counter++; 
+                console.log ("Значение №:" + sequence++);
+                console.log ("Число:" + Num);
+                console.log ("Минимальный делитель:" + Dmin + "\nМаксимальный делитель:" + Dmax + "\nСумма делителей M =" + M);
+                }
+              }
+            }
+              Num++;
+          } while (Counter < 6);
+                
+</script>
+</html>

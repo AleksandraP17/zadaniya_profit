@@ -1,0 +1,27 @@
+<html>
+ <head>
+  <script>
+
+      let Num = 452021;
+      let M; 
+      let a;
+      let Counter = 0;
+      let sequence = 1;
+      while (Counter < 5) {
+          Num++;
+          for (a = 2; a < Math.sqrt(Num); a++) {
+              if (Num % a == 0) {
+                  M = a + Num / a;
+                  if (M % 7 == 3) {
+                      Counter++;
+                      console.log ("Значение №:" + sequence++);
+                      console.log ("Целое число:" + Num);
+                      console.log ("Сумма делителей:" + M);
+                    }
+                    break;
+              }
+          }
+      }
+     
+</script>
+</html>

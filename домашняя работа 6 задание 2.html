@@ -1,0 +1,24 @@
+<html>
+ <head>
+  <script>
+     let lengthMass = Number(prompt ("Введите количество чисел в последовательности"));   
+     let  Massiv = new Array (lengthMass); 
+     for(let i=0; i < Massiv.length; i++) {
+      Massiv [i] = prompt ("Введите значения для массива");
+    }
+       let result = [];
+       let ok = false;
+      for (let i = 0; i < Massiv.length; i++){
+          if (Massiv[i] % 2 === 0){
+              ok = true;
+              result.push(Massiv[i]);
+          }
+      }
+      if (ok){
+          console.log("Mассив из четных чисел заданной последовательности:" + result);  
+      }
+      else{
+          console.log("В последовательности нет четных чисел!");
+      }
+</script>
+</html>
