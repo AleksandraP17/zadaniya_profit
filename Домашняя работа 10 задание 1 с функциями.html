@@ -1,0 +1,43 @@
+<html>
+  <body>
+    <script>
+        let N = +prompt("Введите количество городов N в галактике Milky Way на планете Neptune от 0 до 100:");
+        let NeptuneMat = [];
+        let SummaDorog = 0;
+
+        if (N < 0){
+            alert ("Количество городов не может быть отрицательным, введите число побольше");
+        }
+        if (N > 100){
+            alert ("Количество городов чуть меньше, введите значение не больше 100");
+        }
+
+        function matrixRoads (N){
+        console.log("Матрица дорог планеты Neptune");
+          for (let i = 0; i < N; i++) {
+          NeptuneMat[i] = [];
+            for(let j = 0; j < N; j++){
+              if(i >= j){
+              NeptuneMat[i][j] = 0;
+              } else {
+              NeptuneMat[i][j] = Math.round(Math.random() * (1));
+            }
+          }
+        }
+        return NeptuneMat;
+        }
+
+        function sumRoads (N) {
+          for (let i = 0; i < N; i++) {
+            for(let j = 0; j < N; j++){
+              SummaDorog += NeptuneMat[i][j];
+          }
+        }
+        return SummaDorog;
+        }
+        console.log(matrixRoads(N));
+        console.log("Количество дорог на планете Neptune:" + sumRoads(N));
+  
+    </script>
+  </body>
+</html>
