@@ -1,0 +1,91 @@
+<html>
+  <body>
+    <script>
+        /**
+         *
+         * @param graph массив (список смежности для графа)
+         * @param begin начальная вершина для поиска пути
+         * @param end конечная вершина для поиска пути
+         */
+        
+        
+        function bfs(graph, begin, end){
+            let queue = []; //очередь
+            queue.push(begin);   //начальная вершина добавлена в очередь
+            begin.visited = true;    //вершина посещена
+            while(queue.length > 0){
+                let vertex = queue.shift(); //удаляем первый (верхний) элемент из очереди
+                if(vertex == end){          //если вершина равна конечной, заканчиваем
+                    break;
+                } 
+            for(let neighbor of graph[vertex]){
+                if(!neighbor.visited){    //если сосед не посещался 
+                queue.push(neighbor);      //сосед добавлен в очередь
+                neighbor.visited = true;    //вершина посещена                               
+                if(neighbor === end) return true
+			}
+		} 
+	}
+	           return false                                   
+        }
+        
+                 
+            let way = end;
+            let path = {};  
+            let k = 0;
+            let vertexList = [];
+            
+
+            while(path[way]){
+                vertexList[k] = way;
+                if (way == begin) break;
+                way = path[way];
+                k++;
+            }
+
+
+
+
+           // ДАЛЬШЕ НЕ ЗНАЮ, ЧТО ДЕЛАТЬ Т_Т
+
+
+
+
+
+            if(k > 0){
+                console.log("Длина кратчайшего пути между двумя вершинами:" + k);
+            } else {
+                console.log(-1);
+            }
+
+        let graph = {
+            1:[2,6],
+           
+            2:[1,9],
+          
+            3:[4,9],
+          
+            4:[3,5,6,7],
+           
+            5:[4,9,10],
+
+            6:[1,4,7],
+
+            7:[4,6,8],
+
+            8:[7],
+
+            9:[2,3,5,10],
+
+            10:[5,9]
+        }
+
+        let begin = +prompt("Введите начальную вершину от 1 до 10:");
+        let end = +prompt("Введите конечную вершину от 1 до 10");
+        
+        
+        document.write(bfs(graph, begin, end));
+        
+    </script>
+  </body>
+</html>
