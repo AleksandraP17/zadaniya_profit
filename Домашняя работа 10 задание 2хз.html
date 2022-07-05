@@ -8,56 +8,49 @@
          * @param end конечная вершина для поиска пути
          */
         
-        
         function bfs(graph, begin, end){
-            let queue = []; //очередь
-            queue.push(begin);   //начальная вершина добавлена в очередь
-            begin.visited = true;    //вершина посещена
-            while(queue.length > 0){
-                let vertex = queue.shift(); //удаляем первый (верхний) элемент из очереди
-                if(vertex == end){          //если вершина равна конечной, заканчиваем
-                    break;
-                } 
+        let queue = [];                              //очередь
+        let path = {};                               //пройденные вершины
+        queue.push(begin);                           //начальная вершина добавлена в очередь
+        graph[begin].visited = true;                 //вершина посещена
+
+        while(queue.length > 0){
+            let vertex = queue.shift();               //удаляем элемент из очереди
+            if(vertex == end){
+                break;
+            }
             for(let neighbor of graph[vertex]){
-                if(!neighbor.visited){    //если сосед не посещался 
-                queue.push(neighbor);      //сосед добавлен в очередь
-                neighbor.visited = true;    //вершина посещена                               
-                if(neighbor === end) return true
-			}
-		} 
-	}
-	           return false                                   
+            if(!graph[neighbor].visited){    
+            path[neighbor] = vertex;                   //обратный путь
+            queue.push(neighbor);                      //соседние вершины в очередь
+            graph[neighbor].visited = true;            //посетили соседние вершины
+            }
         }
+    }
         
-                 
-            let way = end;
-            let path = {};  
-            let k = 0;
-            let vertexList = [];
-            
-
-            while(path[way]){
-                vertexList[k] = way;
-                if (way == begin) break;
-                way = path[way];
-                k++;
-            }
-
-
-
-
-           // ДАЛЬШЕ НЕ ЗНАЮ, ЧТО ДЕЛАТЬ Т_Т
-
-
-
-
-
-            if(k > 0){
-                console.log("Длина кратчайшего пути между двумя вершинами:" + k);
-            } else {
-                console.log(-1);
-            }
-
+        let ride = end;
+        let L = 0;
+        let list = [];
+        let report;
+        document.write(`Построенный путь-начальная точка ${begin} и конечная точка ${end} <br> `);
+        while(path[ride]){
+            list[L] = ride;
+            if(ride == begin) break;
+            ride = path[ride];
+            L++;
+        }
+        list.push(begin);
+        for(let i = 0; i < list.length; i++){
+            document.write(list[list.length-i-1] + `  `);
+        }
+        if(L > 0){
+            report =`Длина кратчайшего пути (количество ребер, которые нужно пройти) <br>` + L;
+        } else {
+            report = 'Такого пути не существует <br>' + -1;
+        }
+        return report;
+        }
+              
         let graph = {
             1:[2,6],
            
@@ -78,14 +71,13 @@
             9:[2,3,5,10],
 
             10:[5,9]
-        }
+        };
 
         let begin = +prompt("Введите начальную вершину от 1 до 10:");
         let end = +prompt("Введите конечную вершину от 1 до 10");
-        
-        
-        document.write(bfs(graph, begin, end));
-        
+
+        document.write(`<br>` + bfs(graph,begin,end));
+ 
     </script>
   </body>
 </html>
